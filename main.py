@@ -21,15 +21,24 @@ def fetch_providers():
 
 
 @app.get("/api/v1/provider-exp")
-def fetch_provider_exp():
-    """
-    """
+async def fetch_provider_exp():
     r = requests.get(url_provider_expedia)
     return r.json()
 
 
 @app.get("/api/v1/provider-jmb")
-def fetch_provider_jmb():
+async def fetch_provider_jmb():
+    r = requests.get(url_provider_jumbo)
+    return r.json()
+
+
+@app.get("/api/v1/avail")
+async def fetch_provider_jmb():
+    results = await fetch_provider_exp()
+    print('--------')
+    print(results)
+    print('--------')
+
     r = requests.get(url_provider_jumbo)
     return r.json()
 
